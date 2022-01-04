@@ -40,6 +40,6 @@ public class Grid<T>
 
     public Square<T> this[Coordinate coordinate]
     {
-        get => Squares[coordinate.Y, coordinate.X];
+        get => Squares[Squares.GetLength(0) - (coordinate.Y + 1), coordinate.X];
     }
 }
