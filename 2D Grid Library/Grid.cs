@@ -9,7 +9,7 @@ public class Grid<T>
         Squares = SetGridCoordinates(xAxisLenght, yAxisLenght);
     }
 
-    public Square<T>[] GetLegalAdjacentSquares(Coordinate coordinate, bool includeDiagonal)
+    public virtual Square<T>[] GetLegalAdjacentSquares(Coordinate coordinate, bool includeDiagonal)
     {
         List<Square<T>> legalAdjacentSquares = new();
 
@@ -27,7 +27,7 @@ public class Grid<T>
         return legalAdjacentSquares.ToArray();
     }
 
-    protected Square<T>[,] SetGridCoordinates(int xAxisLenght, int yAxisLenght)
+    protected virtual Square<T>[,] SetGridCoordinates(int xAxisLenght, int yAxisLenght)
     {
         Square<T>[,] squares = new Square<T>[yAxisLenght, xAxisLenght];
 
@@ -38,7 +38,7 @@ public class Grid<T>
         return squares;
     }
 
-    public Square<T> this[Coordinate coordinate]
+    public virtual Square<T> this[Coordinate coordinate]
     {
         get => Squares[Squares.GetLength(0) - (coordinate.Y + 1), coordinate.X];
     }
