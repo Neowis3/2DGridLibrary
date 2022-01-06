@@ -1,6 +1,6 @@
 ﻿namespace _2DGridLibrary;
 
-public class Grid<T>
+public class Grid<T> : IGrid<T>
 {
     public Square<T>[,] Squares { get; protected set; }
 
@@ -9,7 +9,7 @@ public class Grid<T>
         Squares = SetGridCoordinates(xAxisLenght, yAxisLenght);
     }
 
-    public virtual Square<T>[] GetLegalAdjacentSquares(Coordinate coordinate, bool includeDiagonal)
+    public Square<T>[] GetLegalAdjacentSquares(Coordinate coordinate, bool includeDiagonal)
     {
         List<Square<T>> legalAdjacentSquares = new();
 
@@ -27,7 +27,7 @@ public class Grid<T>
         return legalAdjacentSquares.ToArray();
     }
 
-    protected virtual Square<T>[,] SetGridCoordinates(int xAxisLenght, int yAxisLenght)
+    public Square<T>[,] SetGridCoordinates(int xAxisLenght, int yAxisLenght)
     {
         Square<T>[,] squares = new Square<T>[yAxisLenght, xAxisLenght];
 
@@ -38,7 +38,7 @@ public class Grid<T>
         return squares;
     }
 
-    public virtual Square<T> this[Coordinate coordinate]
+    public Square<T> this[Coordinate coordinate]
     {
         get => Squares[Squares.GetLength(0) - (coordinate.Y + 1), coordinate.X];
     }

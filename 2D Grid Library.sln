@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2D Grid Library", "2D Grid Library\2D Grid Library.csproj", "{D99FD0B6-3196-4EBA-83F8-09DF53238338}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2D Grid Library Test", "2D Grid Library Test\2D Grid Library Test.csproj", "{59B103FE-E160-4943-9F8C-03859EF7AEDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2D Grid Library Test", "2D Grid Library Test\2D Grid Library Test.csproj", "{59B103FE-E160-4943-9F8C-03859EF7AEDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
