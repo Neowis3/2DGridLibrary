@@ -35,7 +35,7 @@ public class GridTest
             new int[] { 1, 2, 3, 4, 6, 7, 8, 9 } :
             new int[] { 2, 4, 6, 8 };
 
-        int[] actualAdjacentSquares = grid.GetLegalAdjacentSquares(centerCoordinate, includeDiagonal);
+        int[] actualAdjacentSquares = grid.GetAdjacentSquares(centerCoordinate, includeDiagonal);
         List<int> actualSquareCoordinates = new();
 
         foreach (int square in actualAdjacentSquares)

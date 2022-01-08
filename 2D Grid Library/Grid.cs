@@ -11,10 +11,10 @@ public class Grid<T>
     {
         XAxisLenght = xAxisLenght;
         YAxisLenght = yAxisLenght;
-        SetSquares(squares);
+        SetSquareValues(squares);
     }
 
-    public T[] GetLegalAdjacentSquares(Coordinate coordinate, bool includeDiagonal)
+    public T[] GetAdjacentSquares(Coordinate coordinate, bool includeDiagonal)
     {
         List<T> legalAdjacentSquares = new();
 
@@ -32,9 +32,9 @@ public class Grid<T>
         return legalAdjacentSquares.ToArray();
     }
 
-    public void SetSquares(T[] squaresList)
+    public void SetSquareValues (T[] squareValues)
     {
-        if (squaresList.Length != YAxisLenght * XAxisLenght)
+        if (squareValues.Length != YAxisLenght * XAxisLenght)
             throw new ArgumentException("The lenght of the array does not match the grid square count.");
 
         T[,] newSquares = new T[YAxisLenght, YAxisLenght];
@@ -43,14 +43,16 @@ public class Grid<T>
         for (int y = 0; y < YAxisLenght; y++)
             for (int x = 0; x < XAxisLenght; ++x)
             {
-                newSquares[y, x] = squaresList[positionCounter];
+                newSquares[y, x] = squareValues[positionCounter];
                 positionCounter++;
             }
         Squares = newSquares;
     }
 
-    public T this[Coordinate coordinate]
-    {
-        get => Squares[coordinate.Y, coordinate.X];
-    }
+    public void SetYAxisLenght(int yAxis) => YAxisLenght = yAxis;
+    public void SetXAxisLenght(int xAxis) => XAxisLenght = xAxis;
+
+    public T this[Coordinate coordinate] { get => Squares[coordinate.Y, coordinate.X]; }
+
+    public T this[int y, int x] { get => Squares[y, x]; }
 }
