@@ -49,9 +49,6 @@ public class Grid<T>
         Squares = newSquares;
     }
 
-    public void SetYAxisLenght(int yAxis) => YAxisLenght = yAxis;
-    public void SetXAxisLenght(int xAxis) => XAxisLenght = xAxis;
-
     public T this[Coordinate coordinate] { get => Squares[coordinate.Y, coordinate.X]; }
 
     public T this[int y, int x] { get => Squares[y, x]; }
