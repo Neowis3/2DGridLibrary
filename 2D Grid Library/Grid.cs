@@ -1,45 +1,56 @@
 ﻿namespace _2DGridLibrary;
 
-public class Grid<T> : IGrid<T>
+public class Grid<T>
 {
-    public Square<T>[,] Squares { get; protected set; }
+    private int XAxisLenght { get; set; }
+    private int YAxisLenght { get; set; }
 
-    public Grid(int xAxisLenght, int yAxisLenght)
+    public T[,] Squares { get; protected set; }
+
+    public Grid(int xAxisLenght, int yAxisLenght, T[] squares)
     {
-        Squares = SetGridCoordinates(xAxisLenght, yAxisLenght);
+        XAxisLenght = xAxisLenght;
+        YAxisLenght = yAxisLenght;
+        SetSquares(squares);
     }
 
-    public Square<T>[] GetLegalAdjacentSquares(Coordinate coordinate, bool includeDiagonal)
+    public T[] GetLegalAdjacentSquares(Coordinate coordinate, bool includeDiagonal)
     {
-        List<Square<T>> legalAdjacentSquares = new();
+        List<T> legalAdjacentSquares = new();
 
         if (coordinate.Y - 1 >= 0) legalAdjacentSquares.Add(this[coordinate.South()]);
         if (coordinate.X - 1 >= 0) legalAdjacentSquares.Add(this[coordinate.West()]);
-        if (coordinate.Y + 1 < Squares.GetLength(0)) legalAdjacentSquares.Add(this[coordinate.North()]);
-        if (coordinate.X + 1 < Squares.GetLength(1)) legalAdjacentSquares.Add(this[coordinate.East()]);
+        if (coordinate.Y + 1 < YAxisLenght) legalAdjacentSquares.Add(this[coordinate.North()]);
+        if (coordinate.X + 1 < XAxisLenght) legalAdjacentSquares.Add(this[coordinate.East()]);
         if (includeDiagonal)
         {
             if (coordinate.Y - 1 >= 0 && coordinate.X - 1 >= 0) legalAdjacentSquares.Add(this[coordinate.SouthWest()]);
-            if (coordinate.Y - 1 >= 0 && coordinate.X + 1 < Squares.GetLength(1)) legalAdjacentSquares.Add(this[coordinate.SouthEast()]);
-            if (coordinate.Y + 1 < Squares.GetLength(0) && coordinate.X - 1 >= 0) legalAdjacentSquares.Add(this[coordinate.NorthWest()]);
-            if (coordinate.Y + 1 < Squares.GetLength(0) && coordinate.X + 1 < Squares.GetLength(1)) legalAdjacentSquares.Add(this[coordinate.NorthEast()]);
+            if (coordinate.Y - 1 >= 0 && coordinate.X + 1 < XAxisLenght) legalAdjacentSquares.Add(this[coordinate.SouthEast()]);
+            if (coordinate.Y + 1 < YAxisLenght && coordinate.X - 1 >= 0) legalAdjacentSquares.Add(this[coordinate.NorthWest()]);
+            if (coordinate.Y + 1 < YAxisLenght && coordinate.X + 1 < XAxisLenght) legalAdjacentSquares.Add(this[coordinate.NorthEast()]);
         }
         return legalAdjacentSquares.ToArray();
     }
 
-    public Square<T>[,] SetGridCoordinates(int xAxisLenght, int yAxisLenght)
+    public void SetSquares(T[] squaresList)
     {
-        Square<T>[,] squares = new Square<T>[yAxisLenght, xAxisLenght];
+        if (squaresList.Length != YAxisLenght * XAxisLenght)
+            throw new ArgumentException("The lenght of the array does not match the grid square count.");
 
-        for (int y = 0; y < squares.GetLength(0); y++)
-            for (int x = 0; x < squares.GetLength(1); x++)
-                squares[y, x] = new(x, squares.GetLength(0) - (y + 1));
+        T[,] newSquares = new T[YAxisLenght, YAxisLenght];
+        int positionCounter = 0;
 
-        return squares;
+        for (int y = 0; y < YAxisLenght; y++)
+            for (int x = 0; x < XAxisLenght; ++x)
+            {
+                newSquares[y, x] = squaresList[positionCounter];
+                positionCounter++;
+            }
+        Squares = newSquares;
     }
 
-    public Square<T> this[Coordinate coordinate]
+    public T this[Coordinate coordinate]
     {
-        get => Squares[Squares.GetLength(0) - (coordinate.Y + 1), coordinate.X];
+        get => Squares[coordinate.Y, coordinate.X];
     }
 }

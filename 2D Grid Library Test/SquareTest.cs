@@ -10,8 +10,13 @@ public class SquareTest
     {
         Coordinate expectedSquareCoordinate = new(1, 1);
 
-        Square<int> actualSquare = new(1, 1);
+        Square actualSquare = new DerivedSquareTest(1, 1);
 
         Assert.AreEqual(expectedSquareCoordinate, actualSquare.Coordinates);
     }
+}
+
+public class DerivedSquareTest : Square
+{
+    public DerivedSquareTest(int xCoordinate, int yCoordinate) : base(xCoordinate, yCoordinate)  { }
 }

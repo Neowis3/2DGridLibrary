@@ -2,7 +2,7 @@
 
 public interface IGrid<T>
 {
-    public Square<T>[] GetLegalAdjacentSquares(Coordinate coordinate, bool includeDiagonal);
-    public Square<T>[,] SetGridCoordinates(int xAxisLenght, int yAxisLenght);
-    public Square<T> this[Coordinate coordinate] { get; }
+    public T[] GetLegalAdjacentSquares(Coordinate coordinate, bool includeDiagonal);
+    public T[,] SetGridCoordinates();
+    public T this[Coordinate coordinate] { get; }
 }

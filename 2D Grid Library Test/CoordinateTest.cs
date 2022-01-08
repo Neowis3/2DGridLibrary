@@ -11,7 +11,7 @@ public class CoordinateTest
         int expectedXcoordinate = 1;
         int expectedYcoordinate = 2;
 
-        Coordinate actualCoordinate = new Coordinate(1, 2);
+        Coordinate actualCoordinate = new(1, 2);
 
         Assert.AreEqual(expectedXcoordinate, actualCoordinate.X);
         Assert.AreEqual(expectedYcoordinate, actualCoordinate.Y);

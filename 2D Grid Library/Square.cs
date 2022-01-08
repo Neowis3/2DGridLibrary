@@ -1,6 +1,6 @@
 ﻿namespace _2DGridLibrary;
 
-public class Square<T>
+public abstract class Square
 {
     public Coordinate Coordinates { get; protected set; }
 
