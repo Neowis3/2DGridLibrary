@@ -77,11 +77,23 @@ public class GridTest
         };
         
         Grid<int> grid = new(3, 3, new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 });
-        grid.SetSquares(squaresList);
+        grid.SetSquareValues(squaresList);
         int[,] actualGridSquares = grid.Squares;
 
         for (int y = 0; y < expectedGridSquares.GetLength(0); y++)
             for (int x = 0; x < expectedGridSquares.GetLength(1); x++)
                 Assert.AreEqual(expectedGridSquares[y, x], actualGridSquares[y, x]);
+    }
+
+    [Test]
+    public void GetCoordinates()
+    {
+        Grid<int> grid = new(3, 3, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+        Coordinate[] expectedCoordinates = new Coordinate[] { new(0, 0), new(1, 0), new(2, 0), new(0, 1), new(1, 1), new(2, 1), new(0, 2), new(1, 2), new(2, 2) };
+
+        Coordinate[] actualCoordinates = grid.GetCoordinates();
+
+        for (int y = 0;y < expectedCoordinates.GetLength(0); y++)
+            Assert.AreEqual(expectedCoordinates[y], actualCoordinates[y]);
     }
 }
