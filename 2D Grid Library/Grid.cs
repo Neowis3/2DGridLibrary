@@ -23,16 +23,16 @@ public class Grid<T>
     {
         List<T> legalAdjacentSquares = new();
 
-        if (coordinate.Y - 1 >= 0) legalAdjacentSquares.Add(this[coordinate.South()]);
+        if (coordinate.Y + 1 < YAxisLenght) legalAdjacentSquares.Add(this[coordinate.South()]);
         if (coordinate.X - 1 >= 0) legalAdjacentSquares.Add(this[coordinate.West()]);
-        if (coordinate.Y + 1 < YAxisLenght) legalAdjacentSquares.Add(this[coordinate.North()]);
+        if (coordinate.Y - 1 >= 0) legalAdjacentSquares.Add(this[coordinate.North()]);
         if (coordinate.X + 1 < XAxisLenght) legalAdjacentSquares.Add(this[coordinate.East()]);
         if (includeDiagonal)
         {
-            if (coordinate.Y - 1 >= 0 && coordinate.X - 1 >= 0) legalAdjacentSquares.Add(this[coordinate.SouthWest()]);
-            if (coordinate.Y - 1 >= 0 && coordinate.X + 1 < XAxisLenght) legalAdjacentSquares.Add(this[coordinate.SouthEast()]);
-            if (coordinate.Y + 1 < YAxisLenght && coordinate.X - 1 >= 0) legalAdjacentSquares.Add(this[coordinate.NorthWest()]);
-            if (coordinate.Y + 1 < YAxisLenght && coordinate.X + 1 < XAxisLenght) legalAdjacentSquares.Add(this[coordinate.NorthEast()]);
+            if (coordinate.Y + 1 < YAxisLenght && coordinate.X - 1 >= 0) legalAdjacentSquares.Add(this[coordinate.SouthWest()]);
+            if (coordinate.Y + 1 < YAxisLenght && coordinate.X + 1 < XAxisLenght) legalAdjacentSquares.Add(this[coordinate.SouthEast()]);
+            if (coordinate.Y - 1 >= 0 && coordinate.X - 1 >= 0) legalAdjacentSquares.Add(this[coordinate.NorthWest()]);
+            if (coordinate.Y - 1 >= 0 && coordinate.X + 1 < XAxisLenght) legalAdjacentSquares.Add(this[coordinate.NorthEast()]);
         }
         return legalAdjacentSquares.ToArray();
     }

@@ -21,7 +21,7 @@ public class CoordinateTest
     public void CoordinateNorthTest()
     {
         Coordinate baseCoordinate = new(1, 1);
-        Coordinate expectedNorthCoordinate = new(1, 2);
+        Coordinate expectedNorthCoordinate = new(1, 0);
 
         Coordinate actualNorthCoordinate = baseCoordinate.North();
 
@@ -32,7 +32,7 @@ public class CoordinateTest
     public void CoordinateNorthEastTest()
     {
         Coordinate baseCoordinate = new(1, 1);
-        Coordinate expectedNorthCoordinate = new(2, 2);
+        Coordinate expectedNorthCoordinate = new(2, 0);
 
         Coordinate actualNorthCoordinate = baseCoordinate.NorthEast();
 
@@ -54,7 +54,7 @@ public class CoordinateTest
     public void CoordinateSouthEastTest()
     {
         Coordinate baseCoordinate = new(1, 1);
-        Coordinate expectedNorthCoordinate = new(2, 0);
+        Coordinate expectedNorthCoordinate = new(2, 2);
 
         Coordinate actualNorthCoordinate = baseCoordinate.SouthEast();
 
@@ -65,7 +65,7 @@ public class CoordinateTest
     public void CoordinateSouthTest()
     {
         Coordinate baseCoordinate = new(1, 1);
-        Coordinate expectedNorthCoordinate = new(1, 0);
+        Coordinate expectedNorthCoordinate = new(1, 2);
 
         Coordinate actualNorthCoordinate = baseCoordinate.South();
 
@@ -76,7 +76,7 @@ public class CoordinateTest
     public void CoordinateSouthWestTest()
     {
         Coordinate baseCoordinate = new(1, 1);
-        Coordinate expectedNorthCoordinate = new(0, 0);
+        Coordinate expectedNorthCoordinate = new(0, 2);
 
         Coordinate actualNorthCoordinate = baseCoordinate.SouthWest();
 
@@ -98,7 +98,7 @@ public class CoordinateTest
     public void CoordinateNorthWestTest()
     {
         Coordinate baseCoordinate = new(1, 1);
-        Coordinate expectedNorthCoordinate = new(0, 2);
+        Coordinate expectedNorthCoordinate = new(0, 0);
 
         Coordinate actualNorthCoordinate = baseCoordinate.NorthWest();
 
